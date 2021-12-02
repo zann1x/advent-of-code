@@ -3,18 +3,13 @@ package util
 import (
 	"bufio"
 	"os"
-	"strconv"
 )
 
 func LoadFileContentsIntoIntArray(path string) []int {
 	strArr := LoadFileContentsIntoStringArray(path)
 	var intArr []int
 	for _, strVal := range strArr {
-		var intVal int
-		var err error
-		if intVal, err = strconv.Atoi(strVal); err != nil {
-			panic(err)
-		}
+		intVal := ConvertStringToInt(strVal)
 		intArr = append(intArr, intVal)
 	}
 
@@ -47,10 +42,7 @@ func LoadFileContentsIntoIntMap(path string) map[int]bool {
 	input := map[int]bool{}
 	scanner := bufio.NewScanner(file)
 	for scanner.Scan() {
-		i, err := strconv.Atoi(scanner.Text())
-		if err != nil {
-			panic(err)
-		}
+		i := ConvertStringToInt(scanner.Text())
 		input[i] = true
 	}
 

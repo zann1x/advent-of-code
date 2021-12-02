@@ -3,7 +3,6 @@ package main
 import (
 	"github.com/zann1x/advent-of-code/util"
 	"log"
-	"strconv"
 	"strings"
 )
 
@@ -79,15 +78,8 @@ func parse(line string) parsedLine {
 	ruleCharByteArr := []byte(rule[1])
 	result.ruleChar = ruleCharByteArr[0]
 
-	var err error
-	result.ruleOne, err = strconv.Atoi(ruleCnt[0])
-	if err != nil {
-		panic(err)
-	}
-	result.ruleTwo, err = strconv.Atoi(ruleCnt[1])
-	if err != nil {
-		panic(err)
-	}
+	result.ruleOne = util.ConvertStringToInt(ruleCnt[0])
+	result.ruleTwo = util.ConvertStringToInt(ruleCnt[0])
 
 	return result
 }
